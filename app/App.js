@@ -34,7 +34,7 @@ const App = () =>{
       <Button
         onPress={
           () => {
-            getAlerts('+1349205055')
+            getAlerts('+13149205055')
           }
         }
         title="GET TEST"

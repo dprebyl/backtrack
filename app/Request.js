@@ -17,8 +17,9 @@ export const createAlert = async (userPhone,contactPhone,alertTime,alertMessage)
 
 export const getAlerts = async (userPhone) => {
     let phoneNumber = encodeURIComponent(userPhone)
-    let url = "http://10.104.14.178:3000/" + phoneNumber
+    let url = "http://10.104.14.178:3000/get-alerts?user_phone=" + phoneNumber
     console.log(phoneNumber)
+    console.log(url)
     let alerts = []
 
     fetch(url)
