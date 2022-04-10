@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import Time from './Components/Time';
 import Header from './Components/Header';
+import {createAlert,getAlerts} from './Request';
 
 
 //app it self
@@ -18,6 +19,26 @@ const App = () =>{
        onChangeText={(getAddress) => setAdress(getAddress)} /> 
       <Time/>
 
+      <Button
+        onPress={
+          (userPhone,contactPhone,alertTime,alertMessage) => {
+            const d = new Date();
+            const db_date = d => d.toISOString().slice(0, 19).replace('T', ' ');
+            createAlert('+13149205055','+13149205055',db_date(d),'help!')
+          }
+        }
+        title="PUSH TEST"
+      />
+      <Text/>
+      <Text/>
+      <Button
+        onPress={
+          () => {
+            getAlerts('+1349205055')
+          }
+        }
+        title="GET TEST"
+      />
 
     </View>
   );
