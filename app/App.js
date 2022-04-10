@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import Time from './Components/Time';
 import Header from './Components/Header';
-import {createAlert,getAlerts} from './Request';
+import {createAlert,getAlerts,clearAlert} from './Request';
 
 
 //app it self
@@ -24,6 +24,7 @@ const App = () =>{
           (userPhone,contactPhone,alertTime,alertMessage) => {
             const d = new Date();
             const db_date = d => d.toISOString().slice(0, 19).replace('T', ' ');
+            setTime(db_date(d))
             createAlert('+13149205055','+13149205055',db_date(d),'help!')
           }
         }
@@ -34,10 +35,20 @@ const App = () =>{
       <Button
         onPress={
           () => {
-            getAlerts('+13149205055')
+            getAlerts('+13149205055',time)
           }
         }
         title="GET TEST"
+      />
+      <Text/>
+      <Text/>
+      <Button
+        onPress={
+          () => {
+            clearAlert('+13149205055',time)
+          }
+        }
+        title="RM TEST"
       />
 
     </View>

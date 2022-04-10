@@ -26,3 +26,19 @@ export const getAlerts = async (userPhone) => {
         .then(response => response.json())
         .then(alerts => console.log(alerts))
 }
+
+export const clearAlert = async (userPhone, alertTime) => {
+    let alert = {
+        user_phone: userPhone,
+        alert_time: alertTime
+    }
+
+    console.log(alert)
+
+    fetch("http://10.104.14.178:3000/clear-alert", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify(alert)
+    });
+
+}
