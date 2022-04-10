@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {StyleSheet, Text, TouchableOpacity, View,Button } from 'react-native';
 import AlertList from './AlertList';
 
 
+
 const Alerts = () =>{
+  const [alerts,setAlerts] = useState(["Alert 1","Alert 2"]);
+  const [userPhone, setUserPhone] = useState("+13149205055");
+  const [contactPhone,setContactPhone] = useState("+13149205055"); 
+
+  const addAlert = () => {
+    alert("Alert Added!");
+  }
+
   return(
     <View style ={styles.container}>
 
         {/*Add Button*/}
-        <TouchableOpacity onPress={() => alert('Alert Added')} style={styles.buttonAdd}>
+        <TouchableOpacity onPress={() => addAlert()} style={styles.buttonAdd}>
         <Text style={styles.textAdd}>Add </Text>
         </TouchableOpacity>
 
@@ -18,8 +27,8 @@ const Alerts = () =>{
 
                 {/*Alert Lists will be below*/}
                 <View style={styles.alerts}>
-                   <AlertList text={'ALERT 1 '} />
-                   <AlertList text={'ALERT 2 '} />
+                   <AlertList text={alerts[0]} />
+                   <AlertList text={alerts[1]} />
                 </View>
         </View>
 

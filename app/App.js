@@ -13,6 +13,12 @@ const App = () =>{
   const [lat, setLat] = useState("");
   const [address, setAdress] = useState('1234 N 123 St Number City Number'); //stores address, use address to access it
   const [time, setTime] = useState("11:11");
+
+  const addAlert = () => {
+    
+    console.log("addAlertCalled");
+  }
+
   return(
     <View style={styles.container}>
       <Header />

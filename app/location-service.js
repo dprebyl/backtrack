@@ -22,7 +22,7 @@ export const isHome = async (homeLong, homeLat, radius) => {
         //get current location and compare to home location
         let currentLoc = getLocation();
         let distanceToHome = haversine(currentLoc.coords.latitude,currentLoc.coords.longitude,homeLat,homeLong);
-        if(distanceToHome <= radius ) return true;
+        if(Math.abs(distanceToHome) <= radius ) return true;
         else return false;
     } catch (err) {
 
