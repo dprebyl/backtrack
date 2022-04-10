@@ -1,4 +1,5 @@
 app/.gitignore
+server/*.db
 
 # OSX
 #
@@ -27,5 +28,6 @@ app/.expo/
 app/web-build/
 app/dist/
 
-# Twilio
-**/twilio_credentials.json
+# server
+server/twilio_credentials.json
+server/*.db
