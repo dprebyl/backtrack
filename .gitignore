@@ -1,0 +1,33 @@
+app/.gitignore
+server/*.db
+
+# OSX
+#
+.DS_Store
+
+# Android/IntelliJ
+#
+app/build/
+app/.idea
+app/.gradle
+app/local.properties
+app/*.iml
+app/*.hprof
+
+# node.js
+#
+**/node_modules/
+**/npm-debug.log
+**/yarn-error.log
+
+# Bundle artifacts
+**/*.jsbundle
+
+# Expo
+app/.expo/
+app/web-build/
+app/dist/
+
+# server
+server/twilio_credentials.json
+server/*.db
