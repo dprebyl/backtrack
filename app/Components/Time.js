@@ -6,11 +6,21 @@ const Time = () =>{
   const [date, setDate] = useState(new Date(1598051730000));
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
+  const [dateText, setDateText] = useState("Set Date");
+  const [timeText, setTimeText] = useState("Set Time");
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Spt","Oct","Nov","Dec"];
+
+  const monthToString = (month) => {
+    return months[month];
+  }
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate;
     setShow(false);
     setDate(currentDate);
+    setDateText(monthToString(currentDate.getMonth()) + " " + currentDate.getDate());
+    if(currentDate.getHours() < 10) setTimeText("0" + currentDate.getHours() + ":" + currentDate.getMinutes());
+    else setTimeText(currentDate.getHours() + ":" + currentDate.getMinutes());
   };
 
   const showMode = (currentMode) => {
@@ -38,12 +48,12 @@ const Time = () =>{
     <View >
         <View style>
           <TouchableOpacity onPress={showDatepicker} style={styles.dateSelect}>
-          <Text>Date</Text>
+          <Text>{dateText}</Text>
           </TouchableOpacity>
         </View>
         <View>
         <TouchableOpacity onPress={showTimepicker} style={styles.timeSelect}>
-          <Text>Time</Text>
+          <Text>{timeText}</Text>
           </TouchableOpacity>
         </View>
         <Text>Selected: {date.toLocaleString()}</Text>
@@ -66,14 +76,14 @@ const styles = StyleSheet.create({
     borderColor: '#777',
     padding: 8,
     margin: 10,
-    width:55,
+    width:85,
   },
   timeSelect: {
     borderWidth: 1,
     borderColor: '#777',
     padding: 8,
     margin: 10,
-    width:55,
+    width:85,
   }, 
 });
 
