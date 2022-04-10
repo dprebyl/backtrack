@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import {useEffect, useState} from "react"
-import { PermissionsAndroid } from 'react-native';
-import * as Location from 'expo-location';
-//import Contacts from 'react-native-contacts';
+
+
+import {getLocation} from './location-service.js';
 
 export default function App() {
   const [long, setLong ] = useState(15)
@@ -11,28 +11,21 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      console.log("\n***\nWaiting on permission request.")
-      let permission = await Location.requestForegroundPermissionsAsync();
-      console.log("\n***\nPermission: " + permission.status)
-      if(permission.status=='granted') {
-        let location = await Location.getCurrentPositionAsync({});
+      try {
+        let location = await getLocation()
         setLong(location.coords.longitude)
         setLat(location.coords.latitude)
-        console.log("allowed")
-        console.log("LONG: " + location.coords.longitude);
-        console.log("LAT:  " + location.coords.latitude);
-        console.log("ALT:  " + location.coords.altitude);
-        console.log("SPD:  " + location.coords.speed);
-      } else {  
-        console.log("denied")
+      } catch (err) {
+        setLong(err.message)
       }
     })();
   },[]);
-
+  
+  
   return (
     <View style={styles.container}>
-      <Text>LONG: {long}  a</Text>
-      <Text>LAT: {lat}   a</Text>
+      <Text>LONG: {long}</Text>
+      <Text>LAT: {lat}</Text>
       <StatusBar style="auto" />
     </View>
   );
