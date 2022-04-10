@@ -9,6 +9,8 @@ import {createAlert,getAlerts,clearAlert} from './Request';
 
 //app it self
 const App = () =>{
+  const [long, setLong] = useState("");
+  const [lat, setLat] = useState("");
   const [address, setAdress] = useState('1234 N 123 St Number City Number'); //stores address, use address to access it
   const [time, setTime] = useState("11:11");
   return(
