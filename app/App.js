@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import Time from './Components/Time';
 import Header from './Components/Header';
 import Alerts from './Components/Alerts';
+import {createAlert,getAlerts,clearAlert} from './Request';
 
 
 //app it self
